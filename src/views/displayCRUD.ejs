@@ -37,12 +37,17 @@
     <th>id</th>
     <th>fullname</th>
     <th>username</th>
+    <th>function</th>
   </tr>
   <% dataTable.forEach(function(item){ %>  
     <tr>
         <td><%= item.id %></td>
         <td><%= item.fullname %></td>
         <td><%= item.username %></td>
+        <td>
+          <a href="/edit-crud?id=<%= item.id %>" type="button">Edit</a>
+          <a href="#" type="button">Delete</a>
+        </td>
       </tr>  
     <% }) %> 
 
