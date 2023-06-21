@@ -74,11 +74,11 @@ let UpdateUserData = (data) =>{
             let user= await db.User.findOne({
                 where: {id: data.id}
             })
+           
             if(user){
-                let hashPassword = await bcrypt.hashSync(data.password, salt); 
-                user.fullname= data.fullname,
-                user.username= data.username,
-                user.password= hashPassword, 
+                user.fullname= data.fullname;
+                user.username= data.username;
+                
                 await user.save();
                 resolve();
             }else{
