@@ -29,7 +29,7 @@ let handleUserLogin =(email,password) =>{
                 }
             }else{
                 userData.errCode =1;
-                userData.errMessage= `Your email null`;     
+                userData.errMessage= `Your email or password null`;     
             }   
             resolve(userData) 
         } catch (e) {

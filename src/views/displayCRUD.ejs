@@ -37,6 +37,12 @@
     <th>id</th>
     <th>fullname</th>
     <th>username</th>
+    <th>password</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>address</th>
+    <th>roleId</th>
+    <th>gender</th>
     <th>function</th>
   </tr>
   <% dataTable.forEach(function(item){ %>  
@@ -44,6 +50,12 @@
         <td><%= item.id %></td>
         <td><%= item.fullname %></td>
         <td><%= item.username %></td>
+        <td><%= item.password %></td>
+        <td><%= item.email %></td>
+        <td><%= item.phone %></td>
+        <td><%= item.address %></td>
+        <td><%= item.roleId %></td>
+        <td><%= item.gender %></td>
         <td>
           <a href="/edit-crud?id=<%= item.id %>" type="button">Edit</a>
           <a href="/delete-crud?id=<%= item.id %>" type="button">Delete</a>

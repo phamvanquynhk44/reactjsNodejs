@@ -7,7 +7,7 @@ let handleLogin = async(req, res) => {
     if(!email || !password){
         return res.status(500).json({
             errCode: 1,
-            message: 'khong tim thay email hay password'
+            message: `Can't find email or password`
         })
     }
 

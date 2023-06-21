@@ -53,7 +53,7 @@ let getAllUser = () =>{
 let getUserInfoById = (userId) =>{
     return new Promise(async(resolve, reject) => {
         try {
-            let user= await db.User.findOne({
+            let user = await db.User.findOne({
                 where: { id:userId },
                 raw:true
             })
@@ -75,9 +75,10 @@ let UpdateUserData = (data) =>{
                 where: {id: data.id}
             })
             if(user){
+                let hashPassword = await bcrypt.hashSync(data.password, salt); 
                 user.fullname= data.fullname,
-                user.username= data.username,    
-                
+                user.username= data.username,
+                user.password= hashPassword, 
                 await user.save();
                 resolve();
             }else{
