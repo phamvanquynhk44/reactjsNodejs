@@ -101,27 +101,26 @@ let createNewUser = (data) => {
             if(check === true){
                 resolve({
                     errCode: 1,
-                    message: 'Email này đã được sử dụng xin hãy sử dụng email khác'
+                    errMessage: 'Email này đã được sử dụng xin hãy sử dụng email khác'
                 })
-            }
-            let hashUserPasswordFrom = await hashUserPassword(data.password);
-            await db.User.create({
-                fullname: data.fullname,
-                username: data.username,
-                password: hashUserPasswordFrom,
-                email: data.email,
-                phone: data.phone,
-                address: data.address,
-                roleId: data.roleId,
-                gender: data.gender === '1' ? true : false,
-                status: data.status,
-            })
-            resolve({
-                errCode:0,
-                message: 'OK',
-
-            });  
-            
+            }else{
+                let hashUserPasswordFrom = await hashUserPassword(data.password);
+                await db.User.create({
+                    fullname: data.fullname,
+                    username: data.username,
+                    password: hashUserPasswordFrom,
+                    email: data.email,
+                    phone: data.phone,
+                    address: data.address,
+                    roleId: data.roleId,
+                    gender: data.gender === '1' ? true : false,
+                    status: data.status,
+                })
+                resolve({
+                    errCode:0,
+                    message: 'OK',
+                });  
+            }       
         } catch (e) {
             reject(e);        
         }
