@@ -169,7 +169,10 @@ let UpdateUserData = (data) => {
             if(user){
                 user.fullname = data.fullname,
                 user.username = data.username,
-                user.address = data.address
+                user.phone = data.phone,
+                user.address = data.address,
+                user.gender = data.gender,
+                user.status = data.status,  
                 await user.save();
                 resolve({
                     errCode: 0,
