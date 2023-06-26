@@ -106,15 +106,11 @@ let createNewUser = (data) => {
             }else{
                 let hashUserPasswordFrom = await hashUserPassword(data.password);
                 await db.User.create({
-                    fullname: data.fullname,
-                    username: data.username,
-                    password: hashUserPasswordFrom,
                     email: data.email,
-                    phone: data.phone,
+                    password: hashUserPasswordFrom,
+                    firstName: data.firstName,
+                    lastName: data.lastName,    
                     address: data.address,
-                    roleId: data.roleId,
-                    gender: data.gender === '1' ? true : false,
-                    status: data.status,
                 })
                 resolve({
                     errCode:0,
@@ -167,12 +163,9 @@ let UpdateUserData = (data) => {
                 raw: false  
             }) 
             if(user){
-                user.fullname = data.fullname,
-                user.username = data.username,
-                user.phone = data.phone,
-                user.address = data.address,
-                user.gender = data.gender,
-                user.status = data.status,  
+                user.firstName = data.firstName,
+                user.lastName = data.lastName,
+                user.address = data.address,  
                 await user.save();
                 resolve({
                     errCode: 0,

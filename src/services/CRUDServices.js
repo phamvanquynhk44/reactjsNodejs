@@ -6,15 +6,14 @@ let createNewUser = async (data) => {
         try {
             let hashUserPasswordFrom = await hashUserPassword(data.password);
             await db.User.create({
-                fullname: data.fullname,
-                username: data.username,
-                password: hashUserPasswordFrom,
                 email: data.email,
-                phone: data.phone,
+                password: hashUserPasswordFrom,
+                firstName: data.firstName,
+                lastName: data.lastName,
                 address: data.address,
-                roleId: data.roleId,
+                phoneNumber: data.phoneNumber,
                 gender: data.gender === '1' ? true : false,
-                status: data.status,
+                roleId: data.roleId,
             })
             resolve('ok create add new user succes');
         } catch (e) {
